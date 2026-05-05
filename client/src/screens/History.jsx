@@ -382,6 +382,13 @@ export default function History() {
   };
 
   if (loading && showLoading) {
+    if (isDesktop) {
+      return (
+        <DesktopLayout activeTab="history" babyName={babyName} cfgColor="#FF6B6B">
+          <LoadingScreen message="Reading the patterns..." />
+        </DesktopLayout>
+      );
+    }
     return (
       <div className="history-screen" style={{ backgroundColor: bg }}>
         <AnimatePresence>
