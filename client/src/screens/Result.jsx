@@ -148,7 +148,36 @@ export default function Result() {
     );
   }
 
-  if (data?.noAudioDetected) {
+  if (data?.noAudioDetected && !data?.reason || data?.reason === 'unclear') {
+    const noCryContent = (
+      <div className="no-cry-screen">
+        <img
+          src="/Loading.gif"
+          alt="No cry detected"
+          style={{ width: 100, height: 100, objectFit: 'contain' }}
+        />
+        <p className="no-cry-headline">{data.headline}</p>
+        <p className="no-cry-body">{data.explanation}</p>
+        <motion.button
+          className="no-cry-btn"
+          onClick={() => navigate('/home')}
+          whileTap={{ scale: 0.97 }}
+        >
+          TRY AGAIN
+        </motion.button>
+      </div>
+    );
+
+    if (isDesktop) {
+      return (
+        <DesktopLayout activeTab="home" babyName={babyName} cfgColor="#FF6B6B">
+          <div className="dt-panel dt-panel-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {noCryContent}
+          </div>
+        </DesktopLayout>
+      );
+    }
+
     return (
       <motion.div
         className="screen-outer"
@@ -156,24 +185,9 @@ export default function Result() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <div className="no-cry-screen">
-          <img
-            src="/Loading.gif"
-            alt="No cry detected"
-            style={{ width: 100, height: 100, objectFit: 'contain' }}
-          />
-          <p className="no-cry-headline">{data.headline}</p>
-          <p className="no-cry-body">{data.explanation}</p>
-          <motion.button
-            className="no-cry-btn"
-            onClick={() => navigate('/home')}
-            whileTap={{ scale: 0.97 }}
-          >
-            TRY AGAIN
-          </motion.button>
-        </div>
+        {noCryContent}
       </motion.div>
-    )
+    );
   }
 
   const handleFeedback = async (helped) => {
@@ -379,6 +393,16 @@ export default function Result() {
           >
             {data.headline || cfg.headline}
           </motion.h1>
+
+          {/* CONFIDENCE PILL (Mobile) */}
+          <motion.div 
+            className="confidence-pill"
+            style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)', marginTop: 8 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: phase === 'idle' ? 1 : 0, scale: phase === 'idle' ? 1 : 0.8 }}
+          >
+            <span className="confidence-text">{data.confidence}% CONFIDENCE</span>
+          </motion.div>
           <motion.p
             className="result-explanation"
             style={{ color: 'white', textAlign: 'center', maxWidth: 420, margin: '0 auto', opacity: 0.9, fontSize: 15, lineHeight: 1.5 }}
