@@ -1,7 +1,8 @@
 .result-screen {
-  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 0;
   position: relative;
   overflow: hidden;
@@ -32,8 +33,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 24px;
+  padding: 24px;
   position: relative;
+  /* Ensure this part takes all remaining space and centers its children */
 }
 
 .blob-glow {
@@ -50,9 +52,13 @@
 }
 
 .result-blob {
-  width: 180px;
+  width: auto;
   height: auto;
+  max-width: 60%;
+  max-height: 35vh; /* Max 40% of screen height as per spec */
+  object-fit: contain;
   z-index: 2;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
 }
 
 .result-headline {

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { storage } from './lib/storage'
 import Onboarding from './screens/Onboarding'
@@ -13,6 +14,26 @@ import { InstallPrompt } from './components/InstallPrompt'
 export default function App() {
   const baby = storage.getBaby()
   const hasBabyId = !!baby?.babyId
+
+  useEffect(() => {
+    const applyDarkRoom = () => {
+      const prefs = JSON.parse(localStorage.getItem('waaah_prefs') ?? '{}')
+      const hour = new Date().getHours()
+      const isNight = hour >= 22 || hour < 6
+      const shouldDim = prefs.darkRoomMode && isNight
+
+      if (shouldDim) {
+        document.documentElement.style.filter = 'brightness(0.45)'
+        document.documentElement.style.transition = 'filter 1s ease'
+      } else {
+        document.documentElement.style.filter = 'brightness(1)'
+      }
+    }
+
+    applyDarkRoom()
+    const interval = setInterval(applyDarkRoom, 60000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <BrowserRouter>

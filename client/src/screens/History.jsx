@@ -55,9 +55,9 @@ const ImageWithFallback = ({ src, reason, className }) => {
   );
 };
 
-function DesktopHistory({ baby, babyName, babyAge, bg, data, error, fetchData, expandedId, toggleExpand, navigate, pattern, accuracy, totalSessions }) {
+function DesktopHistory({ baby, babyName, babyAge, bg, data, sessions, error, fetchData, expandedId, toggleExpand, navigate, pattern, accuracy, totalSessions }) {
   const insight = data?.insight;
-  const sessions = data?.sessions || [];
+  // removed: const sessions = data?.sessions || [];
   const recentReason = sessions[0]?.reason || insight?.topReason || 'comfort';
   const themeCfg = getCfg(recentReason);
   const cfgColor = themeCfg.color;
@@ -203,16 +203,16 @@ function DesktopHistory({ baby, babyName, babyAge, bg, data, error, fetchData, e
   );
 }
 
-function MobileHistory({ babyName, babyAge, bg, data, error, fetchData, expandedId, toggleExpand, navigate, pattern, accuracy, totalSessions }) {
+function MobileHistory({ babyName, babyAge, bg, data, sessions, error, fetchData, expandedId, toggleExpand, navigate, pattern, accuracy, totalSessions }) {
   const insight = data?.insight;
-  const sessions = data?.sessions || [];
+  // removed: const sessions = data?.sessions || [];
   const recentReason = sessions[0]?.reason || insight?.topReason || 'comfort';
   const themeCfg = getCfg(recentReason);
 
   return (
     <div className="screen-outer" style={{ backgroundColor: bg }}>
       <div className="screen-inner">
-      <div className="history-inner">
+      <div className="history-inner screen-content">
         <div className="history-header">
           <h1>{babyName}'s patterns</h1>
           {babyAge !== 'unknown' && <div className="baby-age-pill">{babyAge}</div>}
@@ -419,7 +419,8 @@ export default function History() {
 
     return (
       <div className="history-screen" style={{ backgroundColor: bg }}>
-        <div className="history-inner">{emptyContent}</div>
+        <div className="history-inner screen-content">
+{emptyContent}</div>
         <BottomNav activeTab="history" />
       </div>
     );
@@ -429,7 +430,7 @@ export default function History() {
     return (
       <DesktopHistory 
         baby={baby} babyName={babyName} babyAge={babyAge} bg={bg} 
-        data={data} error={error} fetchData={fetchData} 
+        data={data} sessions={sessions} error={error} fetchData={fetchData} 
         expandedId={expandedId} toggleExpand={toggleExpand} navigate={navigate} 
         pattern={pattern} accuracy={accuracy} totalSessions={totalSessions}
       />
@@ -439,7 +440,7 @@ export default function History() {
   return (
     <MobileHistory 
       babyName={babyName} babyAge={babyAge} bg={bg} 
-      data={data} error={error} fetchData={fetchData} 
+      data={data} sessions={sessions} error={error} fetchData={fetchData} 
       expandedId={expandedId} toggleExpand={toggleExpand} navigate={navigate} 
       pattern={pattern} accuracy={accuracy} totalSessions={totalSessions}
     />

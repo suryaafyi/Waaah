@@ -294,3 +294,8 @@
     padding: 32px !important;
   }
 }
+
+.screen-content {
+  padding-bottom: calc(72px + max(12px, env(safe-area-inset-bottom)) + 16px);
+  /* 72px nav height + safe area + breathing room */
+}

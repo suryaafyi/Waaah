@@ -286,7 +286,7 @@ function MobileHome({ bg, babyName, lastSession, recordingState, setRecordingSta
       <PremiumBackground cfgColor={cfgColor} />
       
       {/* A — Top bar */}
-      <div className="home-topbar" style={{ height: 56, padding: '0 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(20px)' }}>
+      <div className="home-topbar" style={{ height: 'auto', padding: 'env(safe-area-inset-top) 20px 0', minHeight: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(20px)' }}>
         <div style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 22, color: cfgColor, letterSpacing: '-0.5px', textTransform: 'uppercase' }}>
           Waaah
         </div>
@@ -302,7 +302,7 @@ function MobileHome({ bg, babyName, lastSession, recordingState, setRecordingSta
         </motion.button>
       </div>
 
-      <div className="mobile-home-content" style={{ paddingTop: 80, position: 'relative', zIndex: 10 }}>
+      <div className="mobile-home-content screen-content" style={{ paddingTop: 'max(80px, calc(env(safe-area-inset-top) + 64px))', position: 'relative', zIndex: 10 }}>
         {/* B — Greeting + headline */}
         <div className="greeting-block" style={{ padding: '0 20px', marginBottom: 40 }}>
           <div style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: 11, letterSpacing: '0.08em', color: '#1a1a1a', opacity: 0.5, textTransform: 'uppercase' }}>

@@ -109,8 +109,13 @@ export default function Settings() {
     const updated = { ...prefs, [key]: val }
     setPrefs(updated)
     localStorage.setItem('waaah_prefs', JSON.stringify(updated))
-    if (key === 'hapticFeedback' && val) {
-      navigator.vibrate?.(40)
+    
+    if (key === 'hapticFeedback' && val && navigator.vibrate) {
+      try { 
+        navigator.vibrate(40) 
+      } catch (e) {
+        console.warn('Vibration failed', e)
+      }
     }
   }
 
@@ -320,7 +325,7 @@ export default function Settings() {
               </motion.button>
               <div className="mobile-wordmark">WAAAH</div>
             </div>
-            <div className="mobile-settings-content">
+            <div className="mobile-settings-content screen-content">
               <motion.div
                 variants={containerVariants}
                 initial="hidden"

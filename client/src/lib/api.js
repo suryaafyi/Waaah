@@ -21,10 +21,11 @@ export const api = {
   createBaby: (body) => post('/api/baby', body),
 
   // Analyse — sends FormData, NOT JSON (has audio file)
-  analyse: (formData) =>
+  analyse: (formData, signal) =>
     fetch(`${BASE}/api/analyse`, {
       method: 'POST',
       body: formData,
+      signal,
       // DO NOT set Content-Type header — browser sets multipart boundary automatically
     }).then(async (r) => {
       if (!r.ok) throw new Error(`API ${r.status}: ${await r.text()}`)

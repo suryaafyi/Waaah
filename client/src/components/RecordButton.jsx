@@ -24,11 +24,25 @@ export default function RecordButton({ recordingState, setRecordingState, onPerm
   const timerRef         = useRef(null)
   const btnRef           = useRef(null)
 
+  const triggerHaptic = (pattern = 40) => {
+    const prefs = JSON.parse(localStorage.getItem('waaah_prefs') ?? '{}')
+    if (prefs.hapticFeedback !== false && navigator.vibrate) {
+      try { navigator.vibrate(pattern) } catch (e) {}
+    }
+  }
+
   const [seconds, setSeconds] = useState(0)
   const [btnPos, setBtnPos] = useState({ x: 0, y: 0 })
 
   const startRecording = async () => {
+    const granted = localStorage.getItem('waaah_mic_granted')
+    if (granted === 'false') {
+      onPermissionDenied()
+      return
+    }
+
     try {
+      triggerHaptic(60) // stronger pulse = recording started
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       streamRef.current = stream
 
@@ -72,6 +86,7 @@ export default function RecordButton({ recordingState, setRecordingState, onPerm
   const stopRecording = () => {
     clearInterval(timerRef.current)
     if (mediaRecorderRef.current?.state === 'recording') {
+      triggerHaptic(30) // softer pulse = recording stopped
       mediaRecorderRef.current.stop()
     }
   }
@@ -95,6 +110,23 @@ export default function RecordButton({ recordingState, setRecordingState, onPerm
   }
 
   useEffect(() => {
+    // Pre-warm mic permission on mount — reduces friction on actual record
+    const prewarmMic = async () => {
+      try {
+        if (!navigator.mediaDevices?.getUserMedia) return
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+        localStorage.setItem('waaah_mic_granted', 'true')
+        stream.getTracks().forEach(t => t.stop())
+      } catch (err) {
+        localStorage.setItem('waaah_mic_granted', 'false')
+      }
+    }
+
+    const alreadyGranted = localStorage.getItem('waaah_mic_granted')
+    if (!alreadyGranted) {
+      prewarmMic()
+    }
+
     return () => {
       clearInterval(timerRef.current)
       stopStream()

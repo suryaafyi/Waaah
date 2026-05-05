@@ -333,15 +333,14 @@ export default function Result() {
 
   return (
     <div className={`screen-outer result-screen-outer phase-${phase}`} style={{ backgroundColor: phase === 'black' ? '#000' : cfg.color, height: '100dvh', overflow: 'hidden' }}>
-      <div className="screen-inner result-screen-inner" style={{
-        position: 'relative',
-        height: '100%',
+      <div className="screen-inner screen-content" style={{ 
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '32px 24px 80px',
-        textAlign: 'center'
+        padding: '32px 24px',
+        textAlign: 'center',
+        minHeight: '100dvh'
       }}>
         <AnimatePresence>
           {phase === 'black' && (

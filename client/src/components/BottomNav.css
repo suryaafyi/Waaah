@@ -1,36 +1,61 @@
 .bottom-nav {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: calc(72px + env(safe-area-inset-bottom));
-  background: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: env(safe-area-inset-bottom);
-  border-top: 1px solid rgba(0,0,0,0.06);
-  z-index: 100;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   max-width: 480px;
-  margin: 0 auto;
+  height: auto; /* not fixed height — let safe area expand it */
+  min-height: 56px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(45, 45, 45, 0.08);
+  display: flex;
+  align-items: flex-start; /* align to top, padding handles spacing */
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 100;
 }
 
 .nav-tab {
-  background: none;
-  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  background: none;
+  border: none;
   cursor: pointer;
-  padding: 8px 16px;
-  transition: all 0.2s ease;
+  padding: 0 20px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 60px;
+}
+
+.nav-tab__icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-tab__label {
-  font-family: var(--font-display);
-  font-size: 10px;
-  letter-spacing: 3px;
+  font-family: var(--font-display); /* Litho */
   font-weight: 400;
+  font-size: 9px;
+  letter-spacing: 3px;
   text-transform: uppercase;
+  line-height: 1;
+}
+
+.nav-tab--active .nav-tab__icon,
+.nav-tab--active .nav-tab__label {
+  color: var(--color-hunger);
+}
+
+.nav-tab--inactive .nav-tab__icon,
+.nav-tab--inactive .nav-tab__label {
+  color: rgba(45, 45, 45, 0.35);
 }

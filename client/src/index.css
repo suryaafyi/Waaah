@@ -114,9 +114,10 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* Bottom nav specifically */
+/* Bottom nav safe area fix */
 .bottom-nav {
-  padding-bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  /* This ensures nav content sits above iPhone home bar */
 }
 
 /* PREMIUM BACKGROUND SYSTEM */
@@ -450,8 +451,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: background-color 0.4s ease;
-  overflow-x: hidden;
 }
 
 .screen-inner {
@@ -460,8 +459,8 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  position: relative;
-  background: inherit;
+  /* Safe area top padding so content never hides behind status bar */
+  padding-top: env(safe-area-inset-top);
 }
 
 /* DESKTOP (≥1024px) */

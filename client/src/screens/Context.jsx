@@ -203,6 +203,9 @@ export default function Context() {
       unusual:   selectedUnusual ?? 'unknown',
     };
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 55000); // 55 second timeout
+
     try {
       const formData = new FormData();
       const audioBlob = window.__waaahAudioBlob;
@@ -217,7 +220,8 @@ export default function Context() {
       formData.append('babyId',  baby?.babyId || '');
       formData.append('babyAge', baby?.age    ?? 'unknown');
 
-      const result = await api.analyse(formData);
+      const result = await api.analyse(formData, controller.signal);
+      clearTimeout(timeoutId);
       window.__waaahResult = result;
       localStorage.setItem('waaah_last_session', JSON.stringify({
         ...result,
@@ -225,13 +229,31 @@ export default function Context() {
       }));
       navigate('/result');
     } catch (err) {
+      clearTimeout(timeoutId);
       console.error('Analyse error:', err);
-      window.__waaahResult = {
-        reason: 'comfort', confidence: 50, headline: 'There there!',
-        action: 'Hold your baby close and try again',
-        explanation: 'We had trouble connecting. Your baby might just need some comfort.',
-        alternatives: [], sessionId: null,
-      };
+      
+      if (err.name === 'AbortError') {
+        window.__waaahResult = {
+          reason: 'comfort',
+          confidence: 50,
+          headline: 'Taking longer than usual',
+          action: 'Try again — our server was waking up',
+          explanation: "Our server was starting up — this happens after a quiet period. Try recording again, it'll be fast now.",
+          alternatives: [],
+          noAudioDetected: false,
+        };
+      } else {
+        window.__waaahResult = {
+          reason: 'comfort',
+          confidence: 50,
+          headline: 'There there!',
+          action: 'Hold your baby close and try again',
+          explanation: 'We had trouble connecting. Your baby might just need some comfort.',
+          alternatives: [],
+          sessionId: null,
+          noAudioDetected: false,
+        };
+      }
       navigate('/result');
     } finally {
       setLoading(false);
