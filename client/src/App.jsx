@@ -8,6 +8,8 @@ import Symptoms   from './screens/Symptoms'
 import History    from './screens/History'
 import Settings   from './screens/Settings'
 
+import { InstallPrompt } from './components/InstallPrompt'
+
 export default function App() {
   const baby = storage.getBaby()
   const hasBabyId = !!baby?.babyId
@@ -23,6 +25,7 @@ export default function App() {
         <Route path="/history"  element={<History />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
+      <InstallPrompt />
     </BrowserRouter>
   )
 }

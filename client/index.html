@@ -3,8 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/gif" href="/Loading.gif" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
     <title>Waaah — Baby Cry Translator</title>
+    
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- iOS specific — Safari needs these separately -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Waaah" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Theme color (colors browser bar on Android) -->
+    <meta name="theme-color" content="#FF6B6B" />
   </head>
   <body>
     <div id="root"></div>
