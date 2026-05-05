@@ -215,7 +215,7 @@ export default function Settings() {
         <motion.button
           className="save-btn"
           onClick={handleSave}
-          style={{ 
+          style={{
             background: genderColorMap[formData.gender],
             opacity: isDirty ? 1 : 0.35,
             pointerEvents: isDirty ? 'auto' : 'none'
@@ -270,7 +270,7 @@ export default function Settings() {
         </p>
         <div className="about-divider" />
         <div className="about-contest">Built for the Nori Mother's Day Challenge</div>
-        <div className="about-version">Version 1.0.0 · May 2025</div>
+        <div className="about-version">Version 1.0.0 · May 2026</div>
       </motion.div>
 
       {/* SECTION 4: Reset */}
@@ -294,7 +294,7 @@ export default function Settings() {
         {isDesktop ? (
           <DesktopLayout activeTab="settings" babyName={savedBaby?.name || ''} cfgColor={genderColorMap[formData.gender]}>
             <div className="settings-desktop-content">
-              <motion.div 
+              <motion.div
                 className="settings-content-inner"
                 variants={containerVariants}
                 initial="hidden"
@@ -315,13 +315,13 @@ export default function Settings() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" strokeWidth="2.5"
                   strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="15 18 9 12 15 6"/>
+                  <polyline points="15 18 9 12 15 6" />
                 </svg>
               </motion.button>
               <div className="mobile-wordmark">WAAAH</div>
             </div>
             <div className="mobile-settings-content">
-              <motion.div 
+              <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
