@@ -1,0 +1,296 @@
+.history-screen {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: relative;
+}
+
+.history-inner {
+  padding: 0 24px 100px; /* 100px bottom padding so last card clears bottom nav */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* EMPTY STATE */
+.history-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.empty-blob {
+  width: 160px;
+  animation: idleBounce 3s infinite ease-in-out;
+  margin-bottom: 24px;
+}
+
+.empty-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: #999;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.02em;
+}
+
+.empty-subtitle {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-dark);
+  opacity: 0.5;
+  margin: 0 0 32px 0;
+}
+
+.record-now-btn {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: white;
+  background: var(--color-hunger); /* fallback */
+  border: none;
+  border-radius: 40px;
+  padding: 14px 40px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: transform 0.1s;
+}
+
+.record-now-btn:active {
+  transform: scale(0.96);
+}
+
+/* HEADER */
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0 16px;
+}
+
+.history-header h1 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--text-dark);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.baby-age-pill {
+  font-family: var(--font-body);
+  font-size: 13px;
+  background: rgba(0,0,0,0.07);
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: var(--text-dark);
+}
+
+/* ERROR BANNER */
+.history-error {
+  background: rgba(0,0,0,0.06);
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-dark);
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+/* PATTERN CARD */
+.pattern-card {
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+/* Active — real pattern found */
+.pattern-card--active {
+  background: var(--color-tired); /* #FFB347 warm amber */
+}
+.pattern-card--active .pattern-card__label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 8px;
+}
+.pattern-card--active .pattern-card__text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 15px;
+  color: white;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+.pattern-card--active .pattern-card__accuracy {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 4px;
+}
+
+/* Pending — enough sessions, no pattern */
+.pattern-card--pending {
+  background: rgba(255,179,71,0.15);
+  border: 1.5px solid rgba(255,179,71,0.3);
+}
+.pattern-card--pending .pattern-card__label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-tired);
+  margin-bottom: 8px;
+}
+.pattern-card--pending .pattern-card__text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--text-dark);
+  opacity: 0.65;
+  line-height: 1.6;
+}
+
+/* Locked — not enough sessions */
+.pattern-card--locked {
+  background: var(--color-tired);
+  opacity: 0.85;
+}
+.pattern-card--locked .pattern-card__label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+.pattern-card--locked .pattern-card__text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 14px;
+  color: white;
+  line-height: 1.6;
+}
+
+/* SESSION LIST */
+.recent-cries-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(0,0,0,0.4);
+  margin-bottom: 16px;
+}
+
+.session-card {
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  cursor: pointer;
+}
+
+.session-card-top {
+  display: flex;
+  gap: 16px;
+}
+
+.session-blob {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.fallback-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.session-info {
+  flex: 1;
+}
+
+.session-headline {
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin: 0;
+}
+
+.session-time {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(0,0,0,0.35);
+}
+
+.session-action {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(0,0,0,0.55);
+  margin: 0;
+}
+
+.session-helped-badge {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-left: 8px;
+}
+.badge-yes { background: #dcfce7; color: #16a34a; }
+.badge-no { background: #fee2e2; color: #dc2626; }
+
+/* CONFIDENCE BAR */
+.conf-track {
+  height: 4px;
+  background: rgba(0,0,0,0.04);
+  border-radius: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.conf-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* DESKTOP STYLES */
+@media (min-width: 1024px) {
+  .dt-sessions-scroll {
+    flex: 1;
+    scrollbar-width: none;
+  }
+  .dt-sessions-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .dt-history-item {
+    padding: 20px !important;
+    border-radius: 20px !important;
+    margin-bottom: 16px !important;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .dt-history-item:hover {
+    transform: translateY(-2px);
+    background: white !important;
+  }
+  .dt-insight-card {
+    padding: 32px !important;
+  }
+}

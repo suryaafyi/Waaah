@@ -1,0 +1,136 @@
+/* OUTTER RINGS */
+.rings-container {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-1, .ring-2, .ring-3 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-1 {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(255,107,107,0.08);
+  animation: ringPulse 2.5s ease-in-out infinite;
+}
+
+.ring-2 {
+  width: 196px;
+  height: 196px;
+  border-radius: 50%;
+  background: rgba(255,107,107,0.12);
+  animation: ringPulse 2.5s ease-in-out infinite 0.3s;
+}
+
+.ring-3 {
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+  background: rgba(255,107,107,0.18);
+  animation: ringPulse 2.5s ease-in-out infinite 0.6s;
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.06); opacity: 0.7; }
+}
+
+/* RECORDING STATE RINGS */
+.recording-rings .ring-1,
+.recording-rings .ring-2,
+.recording-rings .ring-3 {
+  animation: none;
+  transform: scale(1);
+}
+.recording-rings .ring-1 { background: rgba(255,107,107,0.04); }
+.recording-rings .ring-2 { background: rgba(255,107,107,0.08); }
+.recording-rings .ring-3 { background: rgba(255,107,107,0.14); }
+
+  animation: ripple 1.5s infinite linear;
+}
+
+.recording-rings .ring-2 { animation-delay: 0.5s; }
+.recording-rings .ring-3 { animation-delay: 1.0s; }
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* RECORD BUTTON */
+.record-btn {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--color-hunger);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.record-btn:active {
+  transform: scale(0.92);
+}
+
+.record-btn--recording {
+  animation: recordingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes recordingPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(255,107,107,0.4); }
+  50%      { box-shadow: 0 8px 48px rgba(255,107,107,0.7); transform: scale(1.04); }
+}
+
+.record-btn--processing {
+  background: rgba(45,45,45,0.1);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* TIMER & LABEL */
+.record-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #1a1a1a;
+  opacity: 0.5;
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+.record-timer {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--color-hunger);
+  margin-bottom: 8px;
+}
+
+/* PROCESSING VIEW */
+.processing-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.processing-text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+}

@@ -1,0 +1,36 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(72px + env(safe-area-inset-bottom));
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  z-index: 100;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.nav-tab {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+
+.nav-tab__label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 400;
+  text-transform: uppercase;
+}

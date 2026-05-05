@@ -1,0 +1,438 @@
+.settings-screen {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 32px 80px;
+  width: 100%;
+}
+
+.settings-header {
+  margin-bottom: 40px;
+}
+
+.eyebrow {
+  font-family: var(--font-display); /* Litho */
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-hunger);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.settings-title {
+  font-family: var(--font-display); /* Litho */
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0 0 6px 0;
+}
+
+.settings-subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--text-dark);
+  opacity: 0.5;
+  margin: 0;
+}
+
+.section-label {
+  font-family: var(--font-display); /* Litho */
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  opacity: 0.4;
+  margin-bottom: 10px;
+  margin-top: 32px;
+}
+
+.settings-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Profile Section */
+.baby-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.avatar-letter {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 36px;
+  letter-spacing: -0.5px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.avatar-fallback {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 36px;
+  color: white;
+}
+
+.field-label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  opacity: 0.6;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.field-sublabel {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 11px;
+  color: var(--text-dark);
+  opacity: 0.4;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.name-input {
+  font-family: var(--font-body); /* Montserrat 700 */
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--text-dark);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(45,45,45,0.15);
+  border-radius: 0;
+  padding: 6px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.name-input:focus {
+  border-bottom-color: var(--color-hunger);
+}
+
+.save-btn {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  width: 100%;
+  height: 52px;
+  margin-top: 24px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+/* Preferences Section */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(45,45,45,0.06);
+}
+
+.toggle-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.toggle-info {
+  flex: 1;
+}
+
+.toggle-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+}
+
+.toggle-desc {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--text-dark);
+  opacity: 0.5;
+  line-height: 1.5;
+}
+
+/* About Section */
+.about-card {
+  padding: 32px;
+  text-align: center;
+}
+
+.about-logo {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 52px;
+  letter-spacing: -1px;
+  color: var(--color-hunger);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.about-warm-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-dark);
+  opacity: 0.65;
+  line-height: 1.8;
+  margin: 0 auto 20px;
+  max-width: 300px;
+}
+
+.about-divider {
+  width: 48px;
+  height: 1px;
+  background: rgba(45,45,45,0.12);
+  margin: 0 auto 16px;
+}
+
+.about-contest {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 11px;
+  color: var(--text-dark);
+  opacity: 0.3;
+  margin-bottom: 4px;
+}
+
+.about-version {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 11px;
+  color: var(--text-dark);
+  opacity: 0.25;
+}
+
+/* Reset Section */
+.reset-btn {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-hunger);
+  background: transparent;
+  border: 1.5px solid rgba(255,107,107,0.35);
+  border-radius: 50px;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.reset-btn:hover {
+  border-color: var(--color-hunger);
+  background: rgba(255,107,107,0.05);
+}
+
+/* Reset Sheet */
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 200;
+}
+
+.reset-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 28px 28px 0 0;
+  padding: 16px 24px max(32px, env(safe-area-inset-bottom));
+  z-index: 201;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.12);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(45,45,45,0.15);
+  margin: 0 auto 24px;
+}
+
+.sheet-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0 0 12px 0;
+}
+
+.sheet-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--text-dark);
+  opacity: 0.6;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.sheet-confirm {
+  width: 100%;
+  height: 54px;
+  border-radius: 50px;
+  background: var(--color-hunger);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.sheet-dismiss {
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--text-dark);
+  opacity: 0.45;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2d2d2d;
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  z-index: 999;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Pulse Animation */
+@keyframes profilePulse {
+  0%   { box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+  40%  { box-shadow: 0 0 0 4px rgba(255,107,107,0.25),
+                     0 2px 16px rgba(0,0,0,0.06); }
+  100% { box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+}
+
+.profile-pulse {
+  animation: profilePulse 700ms ease-out forwards;
+}
+
+/* Mobile Header */
+.mobile-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-dark);
+}
+
+.mobile-wordmark {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+/* Responsive / Layout Fixes */
+.settings-desktop-content {
+  grid-column: 2 / 5;
+  grid-row: 2;
+  overflow-y: auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.settings-content-inner {
+  width: 100%;
+  max-width: 640px;
+  padding: 40px 32px 80px;
+}
+
+.mobile-settings {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-settings-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 24px 100px; /* 100px bottom so content clears BottomNav */
+}
+
+@media (min-width: 1024px) {
+  .mobile-header {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .settings-container {
+    padding-top: 16px;
+  }
+}
